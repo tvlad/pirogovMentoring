@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+}
+
+group 'pirogovDemo'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    restAssuredVer = "3.1.0"
+    junitVersion = "5.1.0"
+}
+
+dependencies {
+    compile "io.rest-assured:rest-assured:$restAssuredVer"
+
+    testImplementation(
+            "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+    )
+    testRuntimeOnly(
+            "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+    )
+}
+
+
+test {
+    useJUnitPlatform()
+}
+//task wrapper(type: Wrapper) {
+//    gradleVersion = '4.9'
+//}
