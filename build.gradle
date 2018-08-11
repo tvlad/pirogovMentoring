@@ -1,16 +1,28 @@
-plugins {
-    id 'java'
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "io.franzbecker:gradle-lombok:1.14"
+    }
 }
 
-group 'pirogovDemo'
-version '1.0-SNAPSHOT'
+apply plugin : "idea"
 
-sourceCompatibility = 1.8
+subprojects {
 
-repositories {
-    mavenCentral()
+    apply plugin: 'java'
+    apply plugin: 'io.franzbecker.gradle-lombok'
+
+    sourceCompatibility = 1.8
+
+    repositories {
+        jcenter()
+    }
 }
 
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+task wrapper(type: Wrapper){
+    gradleVersion = '4.9'
 }
